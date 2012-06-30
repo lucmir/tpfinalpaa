@@ -24,8 +24,11 @@
 
 using namespace std;
 
+
 int main(int argc, char **argv);
-short getArgs(int argc, char **argv, char **baseFile, char **testUserListFile, char **usersRatingsAvgFile, char **netOutFile, unsigned int *minInters, unsigned int *maxNeighbs, unsigned int *numThreads);
+
+short getArgs(int argc, char **argv, char **baseFile, char **netOutFile, unsigned int *minInters);
+
 void printUsage();
 
 

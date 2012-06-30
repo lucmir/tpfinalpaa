@@ -18,8 +18,6 @@
 #include <math.h>
 #include <pthread.h>
 
-#define NUMBER_OF_USERS    480189
-#define NUMBER_OF_MOVIES    17770
 #define COSENO_SIM          1
 #define PEARSON_SIM         2
 #define SIMPLE_ALGORITHM    1
@@ -42,30 +40,13 @@ bool neighbCmp(Neighbor a, Neighbor b);
 
 /* classe que implementa a rede */
 class Network {
-    // estruturas que armazenam a base de treino
+    
     std::vector< std::vector<int> > userMovies;     // lista de filmes qualificados por cada usuario
-    std::vector< std::vector<char> > userRatings;    // lista de qualificacoes por cada usuario
+    std::vector< std::vector<char> > userRatings;   // lista de qualificacoes por cada usuario
 
-    // medias das qualificacoes por usuario
-    std::vector<double> usersRatingsAvg;
+    int maxMovieIndex;
 
-    // lista de usuarios que compoem o teste
-    std::vector<unsigned long int> testUsersList;
-
-    /* ponteiros para funcao */
-   // Neighbor (Network::*calcIntensSimilarity)(unsigned long int user_u, unsigned long int user_v, int *vector_u, int *vector_v);
-
-    /* estrutura que define os parametros para funcao da thread */
-    struct pthread_param {
-        int threadId;
-        int numThreads;
-        unsigned int minInters;
-        unsigned int maxNeighbs;
-        char *netOutFile;
-        Network* This;
-    };
-    pthread_mutex_t MUTEX;
-
+    
 public:
     // construtor
     Network();
@@ -74,18 +55,22 @@ public:
     ~Network();
 
     void loadBase(char *baseFile);
+    
     void printBase();
-    void loadTestUsersList(char *testUserListFile);
-    void updateUsersRatings(char *usersRatingsAvgFile);
-
+    
+    
     // funcoes para construcao da vizinhanca
-    void buildNetworkParallel(int numThreads, unsigned int minInters, unsigned int maxNeighbs, char *netOutFile);
-    static void *buildNetwork(void *arg);
+    
+    void buildNetwork(int minInters, char *netOutFile);
+    
     unsigned long int buildUserNeighb(unsigned long int user_u, int *vector_u, int *vector_v, unsigned int minInters, std::vector<Neighbor> *userNeighb);
-    double calcRatingsAvg();
+    
     void destroyBase();
+    
     char getRating(unsigned long int userId, int movieId);
-    void printUserNeighb(std::ofstream *file, std::vector<Neighbor> *userNeighb, unsigned long int userId, unsigned long int count, unsigned long int maxNeighbors);
+    
+    void printUserNeighb(std::ofstream *file, std::vector<Neighbor> *userNeighb, unsigned long int userId, unsigned long int count);
+
 };
 
 
