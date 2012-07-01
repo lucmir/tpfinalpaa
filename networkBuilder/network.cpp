@@ -212,7 +212,7 @@ void Network::printUserNeighb(std::ofstream *file, std::vector<Neighbor> *userNe
     /* ordena a vizinhanca pela funcao 1 e imprime */
     sort(userNeighb->begin(), userNeighb->begin()+count, neighbCmp1);
     for(i=0, j=count-1; i < count; i++, j--) {
-        file[0] << userId << " " << (*userNeighb)[i].userId << " " << (*userNeighb)[i].inters << " " << (*userNeighb)[i].cosinoIntens << " " <<  (*userNeighb)[i].pearsonIntens << " " << (*userNeighb)[i].represent << std::endl;
+        file[0] << userId + 1 << " " << (*userNeighb)[i].userId + 1 << " " << (*userNeighb)[i].inters << " " << (*userNeighb)[i].cosinoIntens << " " <<  (*userNeighb)[i].pearsonIntens << " " << (*userNeighb)[i].represent << std::endl;
         //file[1] << userId << " " << (*userNeighb)[j].userId << " " << (*userNeighb)[j].inters << " " << (*userNeighb)[j].cosinoIntens << " " <<  (*userNeighb)[j].pearsonIntens << " " << (*userNeighb)[j].represent << std::endl;
     }
 }
