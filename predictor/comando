@@ -1,0 +1,3 @@
+
+
+./predictor -b /scratch1/lucmir/projetoRecomendacao/entradas/saidas/trainingWithoutTestByUsers.txt -u /scratch1/lucmir/projetoRecomendacao/entradas/saidas/avgPerUser.txt -m /scratch1/lucmir/projetoRecomendacao/entradas/saidas/avgPerMovie.txt -d /scratch1/lucmir/projetoRecomendacao/networkBuilder/saidas/network.1.1,sorted -s /scratch1/lucmir/projetoRecomendacao/networkBuilder/saidas/network.1.2,sorted -t /scratch1/lucmir/projetoRecomendacao/entradas/saidas/mapTest.sorted  -o saidas/saidasSimNorCos
